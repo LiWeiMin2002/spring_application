@@ -1,0 +1,7 @@
+com\yc\test01\App.class
+com\yc\test01\biz\OrderBizImpl.class
+com\yc\test01\biz\OrderBiz.class
+com\yc\test01\aspects\ByeAspect.class
+com\yc\test01\Config.class
+com\yc\test01\aspects\HelloAspect.class
+com\yc\test01\aspects\MyAspects.class
