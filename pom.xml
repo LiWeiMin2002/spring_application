@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.yc</groupId>
+    <artifactId>spring_application</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <!--当前springstudy项目下的子模块列表-->
+    <modules>
+        <module>txbank</module>
+        <module>myspring</module>
+        <module>myproxy</module>
+        <module>aop</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <name>spring_application</name>
+    <!-- FIXME change it to the project's website -->
+    <url>http://www.example.com</url>
+
+    <!--全局属性定义（定义版本）-->
+    <properties>
+        <!--字符集-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <!--JDK版本-->
+        <java.version>1.8</java.version>
+        <!--mysql数据库版本-->
+        <mysql.version>8.0.32</mysql.version>
+        <!--spring-framework版本-->
+        <spring-framework.version>5.3.24</spring-framework.version>
+        <!--测试版本-->
+        <junit.version>4.13.2</junit.version>
+        <!--log4j2版本-->
+        <log4j2.version>2.19.0</log4j2.version>
+        <!--AOP的aspectjweaver版本-->
+        <aspectjweaver.version>1.9.19</aspectjweaver.version>
+        <!--AOP的aspectjrt版本-->
+        <aspectjrt.version>1.9.8</aspectjrt.version>
+        <!--gson版本-->
+        <gson.version>2.10.1</gson.version>
+        <!--lombok版本-->
+        <lombok.version>1.18.24</lombok.version>
+        <!--cglib动态代理版本-->
+        <cglib.version>3.3.0</cglib.version>
+        <!--commons-dbcp2版本-->
+        <commons-dbcp2.version>2.9.0</commons-dbcp2.version>
+        <!--druid版本-->
+        <druid.version>1.0.31</druid.version>
+    </properties>
+
+    <!--公共jar包的导入-->
+    <dependencies>
+        <!--测试-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--开始：==========spring-framework==========-->
+        <!--spring-context(上下文包)-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring-framework.version}</version>
+        </dependency>
+
+        <!--spring-core(核心包)-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring-framework.version}</version>
+        </dependency>
+        <!--结束：==========spring-framework==========-->
+
+        <!--开始：==========log4j2日志==========-->
+        <!--log4j-core-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+
+        <!--log4j-slf4j2-impl-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j2-impl</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+        <!--结束：==========log4j2日志==========-->
+
+        <!--开始：==========AOP==========-->
+        <!--AspectJ Weaver-->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectjweaver.version}</version>
+        </dependency>
+
+        <!--aspectjrt-->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${aspectjrt.version}</version>
+        </dependency>
+        <!--结束：==========AOP==========-->
+
+        <!--gson-->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
+        </dependency>
+
+        <!--lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <!--上线时不带这个jar包，lombok可以动态的生成字节码-->
+            <scope>provided</scope>
+        </dependency>
+
+        <!--cglib动态代理-->
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>${cglib.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
+    </dependencies>
+
+
+    <!--私有jar包的导入-->
+    <dependencyManagement>
+        <dependencies>
+            <!--mysql数据库-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+
+            <!--spring-test-->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring-framework.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!--spring-jdbc-->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring-framework.version}</version>
+            </dependency>
+
+            <!--commons-dbcp2-->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-dbcp2</artifactId>
+                <version>${commons-dbcp2.version}</version>
+            </dependency>
+
+            <!--druid-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <finalName>spring_application</finalName>
+        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+            <plugins>
+                <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
+                <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.0.2</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.0</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.22.1</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.2.2</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>2.5.2</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.8.2</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
