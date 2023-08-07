@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.env.Environment;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.TransactionManager;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -82,5 +83,15 @@ public class Test02_DataSourceConfig extends TestCase {
         Assert.assertNotNull(druidDataSource.getConnection());
         Connection con = druidDataSource.getConnection();
         log.info(con + "\t" + ((DruidDataSource) druidDataSource).getInitialSize());
+    }
+
+
+    @Autowired
+    private TransactionManager tx;
+
+
+    @Test
+    public void testTransactionManager() {
+        log.info(tx);
     }
 }
